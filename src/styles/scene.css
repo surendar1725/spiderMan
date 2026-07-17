@@ -340,6 +340,62 @@
   margin-top: 8px;
 }
 
+.overthink-faq {
+  border-top: 1px solid var(--glass-border);
+  padding-top: 14px;
+}
+
+.overthink-faq summary {
+  cursor: pointer;
+  color: var(--ink-dim);
+  font-size: 0.85rem;
+  list-style: none;
+}
+
+.overthink-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.overthink-faq summary::before {
+  content: "▸ ";
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.overthink-faq[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.overthink-faq summary:hover,
+.overthink-faq summary:focus-visible {
+  color: var(--neon-blue-soft);
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.faq-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.faq-q {
+  font-size: 0.85rem;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.faq-a {
+  font-size: 0.85rem;
+  color: var(--ink-dim);
+  font-style: italic;
+}
+
 .btn {
   flex: 1 1 200px;
   border-radius: 14px;
@@ -445,6 +501,134 @@
 .picker-submit {
   flex: 0 0 auto;
   align-self: flex-start;
+}
+
+/* Custom themed date picker (replaces the native OS calendar popup) */
+.date-picker {
+  position: relative;
+}
+
+.date-picker-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5em;
+  background: rgba(5, 6, 15, 0.55);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  padding: 0.65em 0.8em;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  text-align: left;
+}
+
+.date-picker-trigger:hover,
+.date-picker-trigger:focus-visible {
+  border-color: var(--neon-blue);
+}
+
+.date-picker-placeholder {
+  color: var(--ink-dim);
+}
+
+.date-picker-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 20;
+  width: min(280px, 80vw);
+  background: var(--navy-900);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), var(--glow-blue);
+}
+
+.date-picker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.date-picker-month {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.date-picker-nav {
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  color: var(--ink);
+  width: 28px;
+  height: 28px;
+  line-height: 1;
+  font-size: 1rem;
+}
+
+.date-picker-nav:hover:not(:disabled),
+.date-picker-nav:focus-visible:not(:disabled) {
+  border-color: var(--neon-blue);
+  color: var(--neon-blue-soft);
+}
+
+.date-picker-nav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.date-picker-weekdays,
+.date-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.date-picker-weekdays {
+  margin-bottom: 4px;
+}
+
+.date-picker-weekdays span {
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--ink-dim);
+}
+
+.date-picker-day {
+  aspect-ratio: 1;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--ink);
+  font-size: 0.8rem;
+}
+
+.date-picker-day:hover:not(:disabled),
+.date-picker-day:focus-visible:not(:disabled) {
+  border-color: var(--neon-blue);
+  color: var(--neon-blue-soft);
+}
+
+.date-picker-day:disabled {
+  color: var(--ink-dim);
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.date-picker-day-outside {
+  color: var(--ink-dim);
+  opacity: 0.4;
+}
+
+.date-picker-day-selected {
+  background: var(--neon-blue);
+  color: var(--navy-950);
+  font-weight: 700;
+  border-color: var(--neon-blue);
 }
 
 .picker-submit:disabled {

@@ -29,6 +29,29 @@ const QUESTION_LINES = [
   { text: "What do you say?", variant: "emphasis" as const },
 ];
 
+const OVERTHINKING_FAQ = [
+  {
+    q: "Is this just a typical guy move — sneaking in a date?",
+    a: "No. In my mind I was set on watching Spider-Man with you specifically, and I genuinely love talking movies with you — so I'm just asking.",
+  },
+  {
+    q: "Do you have no one else to talk movies with?",
+    a: "I do. I just wanted to ask you.",
+  },
+  {
+    q: "If you're so sure I'll say no, why ask at all?",
+    a: "I've already been rejected twice. so nothing is new if you said yes — at least one thing I wanted this year will have actually happened.",
+  },
+  {
+    q: "Will this lead to something?",
+    a: "I don't think so. lets watch the movie discuss how well we liked it and go on our way.",
+  },
+  {
+    q: "Doesn't it be awkward",
+    a: "I don't think so. I think it will be fun. If you say no, I'll just go watch with my friends.",
+  },
+];
+
 export default function InvitationCard({ onDecision }: InvitationCardProps) {
   const [stage, setStage] = useState<Stage>("question");
   const [noTooltip, setNoTooltip] = useState(false);
@@ -91,6 +114,18 @@ export default function InvitationCard({ onDecision }: InvitationCardProps) {
                 </p>
               ))}
             </div>
+
+            <details className="overthink-faq">
+              <summary>Things you might be overthinking</summary>
+              <div className="faq-list">
+                {OVERTHINKING_FAQ.map((item, i) => (
+                  <div className="faq-item" key={i}>
+                    <p className="faq-q">{item.q}</p>
+                    <p className="faq-a">{item.a}</p>
+                  </div>
+                ))}
+              </div>
+            </details>
 
             <div className="card-actions">
               <button

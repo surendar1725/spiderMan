@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { submitRsvp } from "@/lib/rsvp";
+import DatePicker from "./DatePicker";
 
 const THEATRE_OPTIONS = [
   "Marina Mall",
@@ -51,14 +52,7 @@ export default function DateTheatrePicker() {
     <form className="picker-form" onSubmit={handleSubmit}>
       <div className="picker-field">
         <label htmlFor="watch-date">📅 Pick a date</label>
-        <input
-          id="watch-date"
-          type="date"
-          min={MIN_WATCH_DATE}
-          value={date}
-          required
-          onChange={(e) => setDate(e.target.value)}
-        />
+        <DatePicker id="watch-date" value={date} onChange={setDate} minDate={MIN_WATCH_DATE} />
       </div>
 
       <div className="picker-field">
